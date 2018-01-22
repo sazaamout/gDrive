@@ -1,31 +1,19 @@
 <?php
 
-/**
- * Promotion Engine - Phase II
- * $Id$
- *
- * @package         PE (Promotion Engine)
- * @subpackage      Models
- * @copyright       (c)SCA Interactive / Blast Promotions Inc.
- * 
- * 
- * @version         $Revision$
- * @modifiedby      $Author$
- * @lastmodified    $Date$
- *
- */
+
 require_once(VENDORS_PATH.'/google-api-php-v2.2.1/vendor/autoload.php');
 
-require_once(EPATH . '/models/model.php');
+
 
   
 define('SCOPES', implode(' ', array( Google_Service_Drive::DRIVE )));
   
-class DriveModel extends Model {
+class gDrive {
 
     // this is the user that will be used to perform the actaul operations
     // make sure that this user have all of the needed permissions
     private $GoogleUser            = 'user@gmail.com';
+  
     private $ApplicationName       = 'Service Accounts Tutorial';
     private $client;
     private $service;
