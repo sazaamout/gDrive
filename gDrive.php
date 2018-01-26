@@ -23,7 +23,7 @@ class gDrive {
     // Constructor
     // -----------------------------------------------------------------------------------
     function __construct() {
-        parent::__construct();
+        
 
         // set the credential array. All of these information can be found in the json file that was provied to you when you create
         // a service account
