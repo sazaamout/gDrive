@@ -53,6 +53,32 @@ class gDrive {
         $this->service = new Google_Service_Drive($this->client);
     }
   
+    // -----------------------------------------------------------------------------------
+    // getInfo
+    // -----------------------------------------------------------------------------------
+    function getInfo( $fileId ) {
+
+        $retval = array(
+            'success' => 0,
+            'errorMessage' => null,
+            'data'  => array()
+        );
+
+        $response = $this->service->files->get($fileId, array(
+            'fields' => 'id, name, modifiedTime',
+            'supportsTeamDrives' => true,
+        ));
+
+        if (empty($response)){
+            $retval['success'] = 0;
+            return $retval;
+        }
+        
+        $retval['success'] = 1;
+        $retval['data'] = $response;
+        return $retval;
+    }
+  
   
     // -----------------------------------------------------------------------------------
     // List Folders
