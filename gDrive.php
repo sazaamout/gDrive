@@ -53,6 +53,24 @@ class gDrive {
         $this->service = new Google_Service_Drive($this->client);
     }
   
+  
+    // -----------------------------------------------------------------------------------
+    // ShareWithUser
+    // -----------------------------------------------------------------------------------
+    function addShared( $fileId, $userEmail, $role ){
+        // role can be reader, writer, etc
+        $userPermission = new Google_Service_Drive_Permission(array(
+            'type' => 'user',
+            'role' => $role,
+            'emailAddress' => $userEmail
+        ));
+        
+        $request = $this->service->permissions->create(
+            $fileId, $userPermission, array('fields' => 'id')
+        );
+    }
+  
+  
     // -----------------------------------------------------------------------------------
     // getInfo
     // -----------------------------------------------------------------------------------
